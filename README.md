@@ -24,4 +24,4 @@ This repository contains a collection of Login and Registration screens built us
 ## Included Screens
 
 1. **BasicLoginScreen**
-   - *Description:* A simple login screen with email and password fields and other fields.
+   - *Description:* A simple login screen with email, password, and other fields.
