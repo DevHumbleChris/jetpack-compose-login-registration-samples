@@ -1,3 +1,7 @@
+<div>
+    <img src="./public/mario.gif" alt="mario" />
+</div>
+
 # Jetpack Compose Login and Registration Screens
 
 This repository contains a collection of Login and Registration screens built using Jetpack Compose, a modern Android UI toolkit.
@@ -16,3 +20,4 @@ This repository contains a collection of Login and Registration screens built us
 
    ```bash
    git clone https://github.com/DevHumbleChris/jetpack-compose-login-registration-samples.git
+   ```
