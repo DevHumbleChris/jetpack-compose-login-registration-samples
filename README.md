@@ -21,3 +21,11 @@ This repository contains a collection of Login and Registration screens built us
    ```bash
    git clone https://github.com/DevHumbleChris/jetpack-compose-login-registration-samples.git
    ```
+
+## Included Screens
+
+1. **BasicLoginScreen**
+
+   - _Description:_ A simple login screen with email, password, and other fields.
+
+   <img src="./public/simple-login.png" alt="simple login image"/>
