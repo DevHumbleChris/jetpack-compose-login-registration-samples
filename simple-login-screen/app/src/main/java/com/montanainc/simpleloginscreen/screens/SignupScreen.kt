@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.montanainc.simpleloginscreen.components.BottomComponent
 import com.montanainc.simpleloginscreen.components.CheckboxComponent
 import com.montanainc.simpleloginscreen.components.HeadingTextComponent
 import com.montanainc.simpleloginscreen.components.MyTextFieldComponent
@@ -36,26 +37,30 @@ fun SignupScreen() {
         ) {
             NormalTextComponent(value = "Hello there,")
             HeadingTextComponent(value = "Create an Account")
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(25.dp))
 
             Column {
                 MyTextFieldComponent(
                     labelValue = "First Name",
                     icon = Icons.Outlined.Person
                 )
+                Spacer(modifier = Modifier.height(10.dp))
                 MyTextFieldComponent(
                     labelValue = "Last Name",
                     icon = Icons.Outlined.Person
                 )
+                Spacer(modifier = Modifier.height(10.dp))
                 MyTextFieldComponent(
                     labelValue = "Email",
                     icon = Icons.Outlined.Email
                 )
+                Spacer(modifier = Modifier.height(10.dp))
                 PasswordTextFieldComponent(
                     labelValue = "Password",
                     icon = Icons.Outlined.Lock
                 )
                 CheckboxComponent()
+                BottomComponent()
             }
         }
     }
