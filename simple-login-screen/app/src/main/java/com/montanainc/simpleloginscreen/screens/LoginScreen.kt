@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.montanainc.simpleloginscreen.components.BottomComponent
 import com.montanainc.simpleloginscreen.components.HeadingTextComponent
 import com.montanainc.simpleloginscreen.components.MyTextFieldComponent
@@ -21,7 +22,7 @@ import com.montanainc.simpleloginscreen.components.NormalTextComponent
 import com.montanainc.simpleloginscreen.components.PasswordTextFieldComponent
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     Surface(
         color = Color.White,
         modifier = Modifier
@@ -45,7 +46,8 @@ fun LoginScreen() {
             BottomComponent(
                 textQuery = "Don't have an account? ",
                 textClickable = "Register",
-                action = "Login"
+                action = "Login",
+                navController
             )
         }
     }
