@@ -240,7 +240,7 @@ fun ClickableTextComponent() {
 }
 
 @Composable
-fun BottomComponent(textQuery: String, textClickable: String) {
+fun BottomComponent(textQuery: String, textClickable: String, action: String) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter
@@ -264,7 +264,7 @@ fun BottomComponent(textQuery: String, textClickable: String) {
                         .heightIn(48.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "Register", color = Color.White, fontSize = 20.sp)
+                    Text(text = action, color = Color.White, fontSize = 20.sp)
                 }
             }
             Spacer(modifier = Modifier.height(10.dp))
