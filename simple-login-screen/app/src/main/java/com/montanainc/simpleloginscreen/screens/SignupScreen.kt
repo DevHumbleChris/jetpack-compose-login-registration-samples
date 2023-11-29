@@ -60,7 +60,7 @@ fun SignupScreen() {
                     icon = Icons.Outlined.Lock
                 )
                 CheckboxComponent()
-                BottomComponent()
+                BottomComponent(textQuery = "Already have an account? ", textClickable = "Login")
             }
         }
     }

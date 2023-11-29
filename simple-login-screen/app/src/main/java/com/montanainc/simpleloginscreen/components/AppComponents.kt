@@ -240,7 +240,7 @@ fun ClickableTextComponent() {
 }
 
 @Composable
-fun BottomComponent() {
+fun BottomComponent(textQuery: String, textClickable: String) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter
@@ -336,7 +336,7 @@ fun BottomComponent() {
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
-            AccountQueryComponent(textQuery = "Already have an account? ", textClickable = "Login")
+            AccountQueryComponent(textQuery, textClickable)
         }
     }
 }
@@ -348,7 +348,7 @@ fun AccountQueryComponent(textQuery: String, textClickable: String) {
             append(textQuery)
         }
         withStyle(style = SpanStyle(color = Secondary, fontSize = 15.sp)) {
-            pushStringAnnotation(tag  = textClickable, annotation = textClickable)
+            pushStringAnnotation(tag = textClickable, annotation = textClickable)
             append(textClickable)
         }
     }
