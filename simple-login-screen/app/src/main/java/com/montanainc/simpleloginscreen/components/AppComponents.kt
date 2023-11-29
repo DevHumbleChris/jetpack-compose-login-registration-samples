@@ -58,6 +58,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.montanainc.simpleloginscreen.R
 import com.montanainc.simpleloginscreen.ui.theme.AccentColor
 import com.montanainc.simpleloginscreen.ui.theme.BgColor
@@ -240,7 +241,12 @@ fun ClickableTextComponent() {
 }
 
 @Composable
-fun BottomComponent(textQuery: String, textClickable: String, action: String) {
+fun BottomComponent(
+    textQuery: String,
+    textClickable: String,
+    action: String,
+    navController: NavHostController
+) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter
@@ -336,13 +342,17 @@ fun BottomComponent(textQuery: String, textClickable: String, action: String) {
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
-            AccountQueryComponent(textQuery, textClickable)
+            AccountQueryComponent(textQuery, textClickable, navController)
         }
     }
 }
 
 @Composable
-fun AccountQueryComponent(textQuery: String, textClickable: String) {
+fun AccountQueryComponent(
+    textQuery: String,
+    textClickable: String,
+    navController: NavHostController
+) {
     val annonatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(color = TextColor, fontSize = 15.sp)) {
             append(textQuery)
@@ -356,7 +366,11 @@ fun AccountQueryComponent(textQuery: String, textClickable: String) {
     ClickableText(text = annonatedString, onClick = {
         annonatedString.getStringAnnotations(it, it)
             .firstOrNull()?.also { annonation ->
-                Log.d("AccountQueryComponent", "${annonation.item} is clicked")
+                if (annonation.item == "Login") {
+                    navController.navigate("Login")
+                } else if (annonation.item == "Register") {
+                    navController.navigate("Signup")
+                }
             }
     })
 }

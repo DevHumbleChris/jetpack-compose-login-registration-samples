@@ -3,15 +3,10 @@ package com.montanainc.simpleloginscreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.montanainc.simpleloginscreen.app.SimpleLoginApp
 import com.montanainc.simpleloginscreen.screens.LoginScreen
-import com.montanainc.simpleloginscreen.screens.SignupScreen
 import com.montanainc.simpleloginscreen.ui.theme.SimpleLoginScreenTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,9 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SimpleLoginScreenTheme {
-                // A surface container using the 'background' color from the theme
-//                SignupScreen()
-                LoginScreen()
+                SimpleLoginApp()
             }
         }
     }
@@ -31,7 +24,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     SimpleLoginScreenTheme {
-//        SignupScreen()
-        LoginScreen()
+        SimpleLoginApp()
     }
 }
