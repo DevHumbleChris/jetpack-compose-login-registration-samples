@@ -328,7 +328,7 @@ fun BottomComponent(textQuery: String, textClickable: String) {
                         )
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.google_svg),
+                        painter = painterResource(id = R.drawable.facebook_svg),
                         contentDescription = "Google Logo",
                         modifier = Modifier
                             .size(30.dp)
