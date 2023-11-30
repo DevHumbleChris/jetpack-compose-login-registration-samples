@@ -1,25 +1,25 @@
 package com.montanainc.halloween.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,22 +30,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.montanainc.halloween.R
+import com.montanainc.halloween.ui.theme.BgSocial
 import com.montanainc.halloween.ui.theme.BorderColor
 import com.montanainc.halloween.ui.theme.BrandColor
 import com.montanainc.halloween.ui.theme.Primary
 import com.montanainc.halloween.ui.theme.Tertirary
 
 @Composable
-fun ImageComponent() {
+fun ImageComponent(image: Int) {
     Image(
-        painter = painterResource(id = R.drawable.sweet_franky),
+        painter = painterResource(id = image),
         contentDescription = null,
         modifier = Modifier
             .fillMaxWidth()
@@ -66,7 +71,7 @@ fun HeadingTextComponent(heading: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTextField(labelVal: String) {
+fun MyTextField(labelVal: String, icon: Int) {
     var textVal by remember {
         mutableStateOf("")
     }
@@ -87,7 +92,7 @@ fun MyTextField(labelVal: String) {
         },
         leadingIcon = {
             Icon(
-                painter = painterResource(id = R.drawable.at_symbol),
+                painter = painterResource(id = icon),
                 contentDescription = "at_symbol",
                 tint = Tertirary
             )
@@ -97,7 +102,7 @@ fun MyTextField(labelVal: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordInputComponent() {
+fun PasswordInputComponent(labelVal: String) {
     var password by remember {
         mutableStateOf("")
     }
@@ -117,7 +122,7 @@ fun PasswordInputComponent() {
         ),
         shape = MaterialTheme.shapes.small,
         placeholder = {
-            Text(text = "Password", color = Tertirary)
+            Text(text = labelVal, color = Tertirary)
         },
         leadingIcon = {
             Icon(
@@ -155,25 +160,99 @@ fun ForgotPasswordTextComponent() {
 }
 
 @Composable
+fun MyButton(labelVal: String) {
+    Button(
+        onClick = { /*TODO*/ },
+        colors = ButtonDefaults.buttonColors(
+            containerColor = BrandColor
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 40.dp)
+    ) {
+        Text(
+            text = labelVal,
+            color = Color.White,
+            fontSize = 18.sp
+        )
+    }
+}
+
+@Composable
 fun BottomComponent() {
-    Box (
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.BottomStart
-    ){
-        Column {
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = BrandColor
-                ),
-                modifier = Modifier.fillMaxWidth().padding(top = 40.dp)
+    Column {
+        MyButton(labelVal = "Continue")
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Divider(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                thickness = 1.dp,
+                color = Tertirary
+            )
+            Text(
+                text = "OR",
+                modifier = Modifier.padding(10.dp),
+                color = Tertirary,
+                fontSize = 20.sp
+            )
+            Divider(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                thickness = 1.dp,
+                color = Tertirary
+            )
+        }
+        Spacer(modifier = Modifier.height(5.dp))
+        Button(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .fillMaxWidth(),
+            colors = ButtonDefaults.outlinedButtonColors(
+                containerColor = BgSocial
+            )
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.google),
+                    contentDescription = "google icon"
+                )
                 Text(
-                    text = "Continue",
-                    color = Color.White,
-                    fontSize = 18.sp
+                    text = "Login With Google",
+                    fontSize = 18.sp,
+                    color = Tertirary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }
     }
+}
+
+@Composable
+fun BottomLoginTextComponent(initialText: String, action: String) {
+    val annotatedString = buildAnnotatedString {
+        withStyle(style = SpanStyle(color = Tertirary)) {
+            append(initialText)
+        }
+        withStyle(style = SpanStyle(color = BrandColor, fontWeight = FontWeight.Bold)) {
+            pushStringAnnotation(tag = action, annotation = action)
+            append(action)
+        }
+    }
+
+    ClickableText(text = annotatedString, onClick = {
+        annotatedString.getStringAnnotations(it, it)
+            .firstOrNull()?.also { span ->
+                Log.d("BottomLoginTextComponent", "${span.item} is Clicked")
+            }
+    })
 }
