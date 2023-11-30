@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.ClickableText
@@ -68,6 +69,26 @@ fun HeadingTextComponent(heading: String) {
         color = Primary,
         fontWeight = FontWeight.Bold
     )
+}
+
+@Composable
+fun ForgotPasswordHeadingTextComponent(action: String) {
+    Column {
+        Text(
+            text = action,
+            modifier = Modifier.fillMaxWidth(),
+            fontSize = 39.sp,
+            color = Primary,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = "Password?",
+            modifier = Modifier.fillMaxWidth().offset(y = (-18).dp),
+            fontSize = 39.sp,
+            color = Primary,
+            fontWeight = FontWeight.Bold
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -332,4 +353,9 @@ fun BottomSignupTextComponent() {
             }
     })
 
+}
+
+@Composable
+fun TextInfoComponent(textVal: String) {
+    Text(text = textVal, color = Tertirary)
 }
