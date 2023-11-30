@@ -33,6 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -75,6 +76,12 @@ fun MyTextField(labelVal: String, icon: Int) {
     var textVal by remember {
         mutableStateOf("")
     }
+    var typeOfKeyboard: KeyboardType = when(labelVal) {
+        "email ID" -> KeyboardType.Email
+        "mobile" -> KeyboardType.Phone
+        else -> KeyboardType.Text
+    }
+
     OutlinedTextField(
         value = textVal,
         onValueChange = {
@@ -84,7 +91,9 @@ fun MyTextField(labelVal: String, icon: Int) {
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = BrandColor,
             unfocusedBorderColor = BorderColor,
-            textColor = Color.Black
+            textColor = Color.Black,
+            focusedLeadingIconColor = BrandColor,
+            unfocusedLeadingIconColor = Tertirary
         ),
         shape = MaterialTheme.shapes.small,
         placeholder = {
@@ -93,10 +102,14 @@ fun MyTextField(labelVal: String, icon: Int) {
         leadingIcon = {
             Icon(
                 painter = painterResource(id = icon),
-                contentDescription = "at_symbol",
-                tint = Tertirary
+                contentDescription = "at_symbol"
             )
-        }
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = typeOfKeyboard,
+            imeAction = ImeAction.Done
+        ),
+        singleLine = true
     )
 }
 
@@ -255,4 +268,68 @@ fun BottomLoginTextComponent(initialText: String, action: String) {
                 Log.d("BottomLoginTextComponent", "${span.item} is Clicked")
             }
     })
+}
+
+@Composable
+fun SignupTermsAndPrivacyText() {
+    val initialText = "Join our coven and accept our "
+    val termsNConditionText = "Terms & Conditions"
+    val andText = " and "
+    val privacyPolicyText = "Privacy Policy."
+    val lastText = " Don't be afraid, we don't bite!"
+
+    val annotatedString = buildAnnotatedString {
+        withStyle(style = SpanStyle(color = Tertirary)) {
+            append(initialText)
+        }
+        withStyle(style = SpanStyle(color = BrandColor, fontWeight = FontWeight.Bold)) {
+            pushStringAnnotation(tag = termsNConditionText, annotation = termsNConditionText)
+            append(termsNConditionText)
+        }
+        withStyle(style = SpanStyle(color = Tertirary)) {
+            append(andText)
+        }
+        withStyle(style = SpanStyle(color = BrandColor, fontWeight = FontWeight.Bold)) {
+            pushStringAnnotation(tag = privacyPolicyText, annotation = privacyPolicyText)
+            append(privacyPolicyText)
+        }
+        withStyle(style = SpanStyle(color = Tertirary)) {
+            append(lastText)
+        }
+    }
+
+    ClickableText(text = annotatedString, onClick = {
+        annotatedString.getStringAnnotations(it, it)
+            .firstOrNull()?.also { span ->
+                Log.d("SignupTermsAndPrivacyText", "${span.item}")
+            }
+    })
+}
+
+@Composable
+fun BottomSignupTextComponent() {
+    val initialText = "Are you a familiar spirit? "
+    val loginText = "Log In "
+    val lastText = "again and join our Halloween party!"
+
+    val annotatedString = buildAnnotatedString {
+        withStyle(style = SpanStyle(color = Tertirary)) {
+            append(initialText)
+        }
+        withStyle(style = SpanStyle(color = BrandColor, fontWeight = FontWeight.Bold)) {
+            pushStringAnnotation(tag = loginText, annotation = loginText)
+            append(loginText)
+        }
+        withStyle(style = SpanStyle(color = Tertirary)) {
+            append(lastText)
+        }
+    }
+
+    ClickableText(text = annotatedString, onClick = {
+        annotatedString.getStringAnnotations(it, it)
+            .firstOrNull()?.also { span ->
+                Log.d("BottomSignupTextComponent", "${span.item}")
+            }
+    })
+
 }

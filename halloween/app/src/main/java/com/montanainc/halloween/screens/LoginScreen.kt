@@ -27,12 +27,10 @@ import com.montanainc.halloween.components.PasswordInputComponent
 @Composable
 fun LoginScreen() {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().padding(20.dp),
         color = Color.White
     ) {
-        Column(
-            modifier = Modifier.padding(20.dp)
-        ) {
+        Column() {
             ImageComponent(image = R.drawable.sweet_franky)
             Spacer(modifier = Modifier.height(10.dp))
             HeadingTextComponent(heading = "Login")

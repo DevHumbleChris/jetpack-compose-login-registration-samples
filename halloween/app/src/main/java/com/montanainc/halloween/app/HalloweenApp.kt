@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.montanainc.halloween.screens.LoginScreen
+import com.montanainc.halloween.screens.SignupScreen
 
 @Composable
 fun HalloweenApp() {
@@ -13,6 +14,6 @@ fun HalloweenApp() {
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
-        LoginScreen()
+        SignupScreen()
     }
 }
