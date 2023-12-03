@@ -2,6 +2,7 @@ package com.montanainc.halloween.components
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -42,6 +43,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.montanainc.halloween.R
 import com.montanainc.halloween.ui.theme.BgSocial
 import com.montanainc.halloween.ui.theme.BorderColor
@@ -97,7 +99,7 @@ fun MyTextField(labelVal: String, icon: Int) {
     var textVal by remember {
         mutableStateOf("")
     }
-    var typeOfKeyboard: KeyboardType = when(labelVal) {
+    var typeOfKeyboard: KeyboardType = when (labelVal) {
         "email ID" -> KeyboardType.Email
         "mobile" -> KeyboardType.Phone
         else -> KeyboardType.Text
@@ -185,16 +187,20 @@ fun PasswordInputComponent(labelVal: String) {
 }
 
 @Composable
-fun ForgotPasswordTextComponent() {
+fun ForgotPasswordTextComponent(navController: NavHostController) {
     Text(
         text = "Forgot Password?",
         color = BrandColor,
         fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        modifier = Modifier.clickable {
+            navController.navigate("ForgotPassword")
+        }
     )
 }
 
 @Composable
-fun MyButton(labelVal: String) {
+fun MyButton(labelVal: String, navController: NavHostController) {
     Button(
         onClick = { /*TODO*/ },
         colors = ButtonDefaults.buttonColors(
@@ -207,15 +213,20 @@ fun MyButton(labelVal: String) {
         Text(
             text = labelVal,
             color = Color.White,
-            fontSize = 18.sp
+            fontSize = 18.sp,
+            modifier = Modifier.clickable {
+                if (labelVal == "Submit") {
+                    navController.navigate("ResetPassword")
+                }
+            }
         )
     }
 }
 
 @Composable
-fun BottomComponent() {
+fun BottomComponent(navController: NavHostController) {
     Column {
-        MyButton(labelVal = "Continue")
+        MyButton(labelVal = "Continue", navController = navController)
         Spacer(modifier = Modifier.height(10.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -272,7 +283,7 @@ fun BottomComponent() {
 }
 
 @Composable
-fun BottomLoginTextComponent(initialText: String, action: String) {
+fun BottomLoginTextComponent(initialText: String, action: String, navController: NavHostController) {
     val annotatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(color = Tertirary)) {
             append(initialText)
@@ -287,6 +298,9 @@ fun BottomLoginTextComponent(initialText: String, action: String) {
         annotatedString.getStringAnnotations(it, it)
             .firstOrNull()?.also { span ->
                 Log.d("BottomLoginTextComponent", "${span.item} is Clicked")
+                if (span.item == "Join our coven!") {
+                    navController.navigate("SignupScreen")
+                }
             }
     })
 }
@@ -328,10 +342,10 @@ fun SignupTermsAndPrivacyText() {
 }
 
 @Composable
-fun BottomSignupTextComponent() {
+fun BottomSignupTextComponent(navController: NavHostController) {
     val initialText = "Are you a familiar spirit? "
-    val loginText = "Log In "
-    val lastText = "again and join our Halloween party!"
+    val loginText = "Log In"
+    val lastText = " again and join our Halloween party!"
 
     val annotatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(color = Tertirary)) {
@@ -349,7 +363,9 @@ fun BottomSignupTextComponent() {
     ClickableText(text = annotatedString, onClick = {
         annotatedString.getStringAnnotations(it, it)
             .firstOrNull()?.also { span ->
-                Log.d("BottomSignupTextComponent", "${span.item}")
+                if (span.item == "Log In") {
+                    navController.navigate("LoginScreen")
+                }
             }
     })
 

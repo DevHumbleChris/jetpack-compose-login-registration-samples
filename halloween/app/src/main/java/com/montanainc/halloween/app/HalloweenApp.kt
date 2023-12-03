@@ -5,10 +5,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.montanainc.halloween.screens.ForgotPasswordScreen
 import com.montanainc.halloween.screens.LoginScreen
-import com.montanainc.halloween.screens.ResetPasswordScreen
-import com.montanainc.halloween.screens.SignupScreen
+import com.montanainc.halloween.screens.Navigation
 
 @Composable
 fun HalloweenApp() {
@@ -16,6 +14,6 @@ fun HalloweenApp() {
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
-        ResetPasswordScreen()
+        Navigation()
     }
 }

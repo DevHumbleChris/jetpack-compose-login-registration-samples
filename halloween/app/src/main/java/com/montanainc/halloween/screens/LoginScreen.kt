@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.montanainc.halloween.R
 import com.montanainc.halloween.components.BottomComponent
 import com.montanainc.halloween.components.BottomLoginTextComponent
@@ -25,7 +26,7 @@ import com.montanainc.halloween.components.MyTextField
 import com.montanainc.halloween.components.PasswordInputComponent
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     Surface(
         modifier = Modifier.fillMaxSize().padding(20.dp),
         color = Color.White
@@ -44,18 +45,19 @@ fun LoginScreen() {
                     horizontalArrangement = Arrangement.End,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    ForgotPasswordTextComponent()
+                    ForgotPasswordTextComponent(navController)
                 }
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.BottomStart
                 ) {
                     Column {
-                        BottomComponent()
+                        BottomComponent(navController)
                         Spacer(modifier = Modifier.height(12.dp))
                         BottomLoginTextComponent(
-                            initialText = "Haven't we seen you around here before?",
-                            action = " Join our coven!"
+                            initialText = "Haven't we seen you around here before? ",
+                            action = "Join our coven!",
+                            navController
                         )
                     }
                 }
