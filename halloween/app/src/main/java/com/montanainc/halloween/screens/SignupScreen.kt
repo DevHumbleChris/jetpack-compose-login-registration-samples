@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.montanainc.halloween.R
 import com.montanainc.halloween.components.BottomSignupTextComponent
 import com.montanainc.halloween.components.HeadingTextComponent
@@ -21,7 +22,7 @@ import com.montanainc.halloween.components.MyTextField
 import com.montanainc.halloween.components.SignupTermsAndPrivacyText
 
 @Composable
-fun SignupScreen() {
+fun SignupScreen(navController: NavHostController) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -47,9 +48,9 @@ fun SignupScreen() {
                 contentAlignment = Alignment.BottomStart
             ) {
                 Column {
-                    MyButton(labelVal = "Continue")
+                    MyButton(labelVal = "Continue", navController = navController)
                     Spacer(modifier = Modifier.height(10.dp))
-                    BottomSignupTextComponent()
+                    BottomSignupTextComponent(navController)
                 }
             }
             
