@@ -40,3 +40,14 @@ This repository contains a collection of Auth screens built using Jetpack Compos
      - [Figma File](<https://www.figma.com/file/f1ycwMo2IDH4Ig5OKfh8oz/Login-and-Sign-up-Screens-(Community)?type=design&node-id=103%3A350&mode=design&t=NKilFaZkVrQm7T0R-1>)
 
    <img src="./public/halloween.png" alt="halloween" />
+
+3. **Spotify-Redesign**
+
+   - _Figma Credits:_ Author: [@soroushnrz](https://dribbble.com/soroushnrz)
+
+   - _Description:_ Spotify app redesign was created by [@soroushnrz](https://dribbble.com/soroushnrz). Their creative work and attention to detail have greatly contributed to the visual aesthetics of this project.
+
+   - Figma Designs:
+     - [Figma File](https://www.figma.com/file/MruO0xM1DsG8W9RQNvTVp5/Spotify-Redesign---Free-Ui-Kit-(Dark-Mode)-(Community)?type=design&node-id=0%3A1&mode=design&t=7KuCDUFt5X8pCN5P-1)
+
+   <img src="./public/spotify.png" alt="spotify" />
