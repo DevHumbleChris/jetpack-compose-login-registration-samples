@@ -51,3 +51,14 @@ This repository contains a collection of Auth screens built using Jetpack Compos
      - [Figma File](https://www.figma.com/file/MruO0xM1DsG8W9RQNvTVp5/Spotify-Redesign---Free-Ui-Kit-(Dark-Mode)-(Community)?type=design&node-id=0%3A1&mode=design&t=7KuCDUFt5X8pCN5P-1)
 
    <img src="./public/spotify.png" alt="spotify" />
+
+4. **Twitch-app-concept**
+
+   - _Figma Credits:_ Author: [@gravinalorenzo](https://www.figma.com/@gravinalorenzo)
+
+   - _Description:_ Twitch app redesign was created by [@soroushnrz](https://dribbble.com/soroushnrz) and me too 😂🤣. Their creative work on the twitch app concept login was their idea. However, I added some spicy and created the Signup screen 👏😊 ( big ups to me 😘).
+
+   - Figma Designs:
+     - [Figma File](https://www.figma.com/file/wJrpw7ZLvtGRNSmhnSayxg/Twitch-App-Concept-(Community)?type=design&node-id=110%3A328&mode=design&t=TT5CtFRz1VmbEHZX-1)
+
+   <img src="./public/twitch.png" alt="twitch" />
