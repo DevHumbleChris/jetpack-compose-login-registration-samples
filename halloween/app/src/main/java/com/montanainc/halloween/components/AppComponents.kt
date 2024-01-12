@@ -99,7 +99,7 @@ fun MyTextField(labelVal: String, icon: Int) {
     var textVal by remember {
         mutableStateOf("")
     }
-    var typeOfKeyboard: KeyboardType = when (labelVal) {
+    val typeOfKeyboard: KeyboardType = when (labelVal) {
         "email ID" -> KeyboardType.Email
         "mobile" -> KeyboardType.Phone
         else -> KeyboardType.Text
@@ -336,7 +336,7 @@ fun SignupTermsAndPrivacyText() {
     ClickableText(text = annotatedString, onClick = {
         annotatedString.getStringAnnotations(it, it)
             .firstOrNull()?.also { span ->
-                Log.d("SignupTermsAndPrivacyText", "${span.item}")
+                Log.d("SignupTermsAndPrivacyText", span.item)
             }
     })
 }
